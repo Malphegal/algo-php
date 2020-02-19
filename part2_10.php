@@ -1,5 +1,5 @@
 <?php
     include "part2_allFunctions.php";
 
-    afficherFormulaireExo10();
+    echo afficherFormulaireExo10();
 ?>

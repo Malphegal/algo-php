@@ -3,5 +3,5 @@
 
     $nomsDesChamps = ["Nom", "Prénom", "Ville"];
 
-    afficherTextboxes($nomsDesChamps);
+    echo creerTextboxes($nomsDesChamps);
 ?>

@@ -3,5 +3,5 @@
 
     $elements = ["Monsieur", "Madame", "Mademoiselle"];
     
-    alimenterListeDeroulante($elements);
+    echo alimenterListeDeroulante($elements);
 ?>

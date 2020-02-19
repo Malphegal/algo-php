@@ -6,10 +6,10 @@
     }
 
     // Exo 2
-    function afficherTableHTML($table){
+    function creerTableHTML($table){
         ksort($table);
 
-        echo "<table border=1>\n
+        $res = "<table border=1>\n
                 <thead>\n
                     <tr>\n
                         <th>Pays</th>\n
@@ -17,19 +17,21 @@
                     </tr>\n
                 </thead>";
         foreach ($table as $key => $value) {
-            echo "<tr>\n
+            $res .= "<tr>\n
                     <td>" . mb_strtoupper($key) . "</td>\n
                     <td>$value</td>\n
                 </tr>";
         }
-        echo "</table>";
+        return "$res</table>";
     }
 
     // Exo 3
-    // Pas de méthode
+    function creerLienElan(){
+        return "<a href=\"https://elan-formation.eu/\" target=\"_blank\">Le site ELAN formation</a>";
+    }
 
     // Exo 4
-    function afficherTableHTML2($table){
+    function creerTableHTML2($table){
 
         $codePays = ["France" => "fr",
             "Allemagne" => "de",
@@ -39,7 +41,7 @@
 
         ksort($table);
 
-        echo "<table border=1>\n
+        $res = "<table border=1>\n
                 <thead>\n
                     <tr>\n
                         <th>Pays</th>\n
@@ -51,71 +53,74 @@
             if (!array_key_exists($key, $codePays))
                 continue;
             $code = $codePays[$key];
-            echo "<tr>\n
+            $res .= "<tr>\n
                     <td>" . mb_strtoupper($key) . "</td>\n
                     <td>$value</td>\n
                     <td><a href=\"https://$code.wikipedia.org/wiki\" target=\"_blank\">Lien</a></td>\n
                 </tr>";
         }
-        echo "</table>";
+        return "$res</table>";
     }
 
     // Exo 5
-    function afficherTextboxes($nomsDesChamps){
-        echo "<div style=\"display: flex; flex-direction: column; background-color: #efefef; padding: 10px;\">\n";
+    function creerTextboxes($nomsDesChamps){
+        $res = "<div style=\"display: flex; flex-direction: column; background-color: #efefef; padding: 10px;\">\n";
 
         foreach ($nomsDesChamps as $key) {
-            echo "<label for=\"" . strtolower($key) . "\">$key</label>\n
+            $res .= "<label for=\"" . strtolower($key) . "\">$key</label>\n
             <input type=\"text\" style=\"width: 200px;\">\n";
         }
 
-        echo "</div>";
+        return "$res</div>";
     }
 
     // Exo 6
     function alimenterListeDeroulante($elements){
-        echo "<div style=\"background-color: #efefef; padding: 10px;\">\n
+        $res = "<div style=\"background-color: #efefef; padding: 10px;\">\n
             <label for=\"choix\">Choix :</label>\n
             <select name=\"choix\">\n";
 
         foreach ($elements as $key) {
-            echo "<option value=\"\">$key</option>\n";
+            $res .= "<option value=\"\">$key</option>\n";
         }
-        echo "</select></div>";
+        return "$res</select></div>";
     }
 
     // Exo 7
-    function genererCheckbox($cases){
-        echo "<div style=\"display: flex; flex-direction: column;\"\n
+    function creerCheckbox($cases){
+        $res = "<div style=\"display: flex; flex-direction: column;\"\n
             <label>Les checkboxes :</label>";
 
         foreach ($cases as $key => $value) {
-            echo "<div>\n
+            $res .= "<div>\n
                 <input type=\"checkbox\"" . ($value ? "checked" : "") . ">\n
                 $key\n
                 </div>";
         }
 
-        echo "</div>";
+        return "$res</div>";
     }
 
     // Exo 8
     function repeterImage($uri, $nb){
+        $res = "";
         for ($i = 0; $i < $nb; $i++){
-            echo "<img src=\"$uri\" style=\"width: " . floor(100 / ($nb + 1)) . "vw\" />\n";
+            $res .= "<img src=\"$uri\" style=\"width: " . floor(100 / ($nb + 1)) . "vw\" />\n";
         }
+        return $res;
     }
 
     // Exo 9
-    function afficherRadio($nomsRadio){
+    function creerRadio($nomsRadio){
+        $res = "";
         foreach ($nomsRadio as $key) {
-            echo "<div style=\"background-color: #efefef; display: flex; flex-direction: column\">\n
+            $res .= "<div style=\"background-color: #efefef; display: flex; flex-direction: column\">\n
                 <div>\n
                 <input type=\"radio\" name=\"nomradio\" value=\"$key\" id=\"" . strtolower($key) . "\">\n
                 <label>$key</label>\n
                 </div>\n";
             }
-        echo "</div>";
+        return "$res</div>";
     }
 
     // Exo 10
@@ -124,21 +129,21 @@
         $civilite = ["Monsieur", "Madame", "Autre"];
         $nomsFormation = ["Développeur Logiciel", "Designer web", "Intégrateur", "Chef de projet"];
 
-        echo "<form style=\"background-color: #efefef\">\n
+        $res = "<form style=\"background-color: #efefef\">\n
             <label style=\"padding: 10px\">Le formulaire de l'exo 10</label>\n";
-        echo afficherTextboxes($textBoxes);
-        echo "<br/><label style=\"padding: 10px\">Sexe</label>";
-        echo alimenterListeDeroulante($civilite);
-        echo "<br/><label style=\"padding: 10px\">Formation</label>";
-        echo alimenterListeDeroulante($nomsFormation);
-        echo "<input style=\"margin: 10px\" type=\"button\" value=\"Valider\">";
-        echo "</form>";
+        $res .= creerTextboxes($textBoxes);
+        $res .= "<br/><label style=\"padding: 10px\">Sexe</label>";
+        $res .= alimenterListeDeroulante($civilite);
+        $res .= "<br/><label style=\"padding: 10px\">Formation</label>";
+        $res .= alimenterListeDeroulante($nomsFormation);
+        $res .= "<input style=\"margin: 10px\" type=\"button\" value=\"Valider\">";
+        return "$res</form>";
     }
 
     // Exo 11
     function formaterDateFr($str){
         setlocale(LC_TIME, "fr_FR");
-        echo utf8_encode(strftime("%A %d %B %Y", strtotime($str)));
+        return utf8_encode(strftime("%A %d %B %Y", strtotime($str)));
     }
 
     // Exo 12, 13, 14
@@ -146,7 +151,10 @@
 
     // Exo 15
     function checkEmail($email){
-        $msg = filter_var($email, FILTER_VALIDATE_EMAIL) ? "est valide" : "n'est pas valide";
-        printf("L'e-mail [%'_25s] %s<br/>", $email, $msg);
+        $isValide = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $msg = $isValide ? "est valide" : "n'est pas valide";
+        $style = "style=\"color: " . ($isValide ? "#12ab12" : "#fb5555") . "; margin: 0\"";
+        $res = sprintf("<p %s>L'e-mail [%s] %s</p>", $style, $email, $msg);
+        return str_replace("^", "&nbsp;", $res);
     }
 ?>

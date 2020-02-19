@@ -6,8 +6,8 @@
     $email3 = "noix.de.coco@.fr";
     $email4 = "@banane.fr";
 
-    checkEmail($email1);
-    checkEmail($email2);
-    checkEmail($email3);
-    checkEmail($email4);
+    echo checkEmail($email1);
+    echo checkEmail($email2);
+    echo checkEmail($email3);
+    echo checkEmail($email4);
 ?>

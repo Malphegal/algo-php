@@ -3,5 +3,5 @@
 
     $nomsRadio = ["Bébé", "Garçon", "Fille", "Adulte"];
 
-    afficherRadio($nomsRadio);
+    echo creerRadio($nomsRadio);
 ?>

@@ -5,5 +5,5 @@
         "Choix 2" => true,
         "Choix 3" => false];
     
-    genererCheckbox($cases);
+    echo creerCheckbox($cases);
 ?>

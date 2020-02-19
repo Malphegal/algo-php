@@ -6,5 +6,5 @@
         "USA" => "Washington",
         "Italie" => "Rome"];
 
-    afficherTableHTML($capitales);
+    echo creerTableHTML($capitales);
 ?>
