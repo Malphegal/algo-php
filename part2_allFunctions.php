@@ -140,4 +140,13 @@
         setlocale(LC_TIME, "fr_FR");
         echo utf8_encode(strftime("%A %d %B %Y", strtotime($str)));
     }
+
+    // Exo 12, 13, 14
+    // Pas de méthode
+
+    // Exo 15
+    function checkEmail($email){
+        $msg = filter_var($email, FILTER_VALIDATE_EMAIL) ? "est valide" : "n'est pas valide";
+        printf("L'e-mail [%'_25s] %s<br/>", $email, $msg);
+    }
 ?>
