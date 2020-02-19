@@ -11,8 +11,7 @@
 
         public function __construct($marque, $modele, $autonomie)
         {
-            $this->_marque = $marque;
-            $this->_modele = $modele;
+            parent::__construct($marque, $modele);
             $this->_autonomie = $autonomie;
         }
         
