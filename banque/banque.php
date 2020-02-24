@@ -1,6 +1,6 @@
 <?php
-    include "exerciceTableau_classTitulaire.php";
-    include "exerciceTableau_utils.php";
+    include "classTitulaire.php";
+    include "banque_utils.php";
 
     $p1 = util_createUser("Pastorès", "Pierre", "26-07-1996", "Haguenau");
 
@@ -45,11 +45,16 @@
     echo writeInfo("Ajout d'un compte [Livret A (" . Compte::POUND . ")] à " . writeNames($p2) . ".");
     $p2->ajouterCompte("Livret A", Compte::POUND);
 
-    echo writeInfo("Ajout de 74 unité d'argent à " . writeNames($p2) . " au compte [Livret A].");
-    $p2->deposerSommeAuCompte("Livret A", 74);
+    echo writeInfo("Ajout de 740 unité d'argent à " . writeNames($p2) . " au compte [Livret A].");
+    $p2->deposerSommeAuCompte("Livret A", 740);
 
     echo writeInfo("Retrait de 300 unité d'argent à " . writeNames($p2) . " au compte [Livret bleu].");
     $p2->retirerSommeAuCompte("Livret bleu", 300);
-
+    
+    echo $p2;
+    
+    echo writeInfo("Virement de 450 unité d'argent de " . writeNames($p2) . " du compte [Livret A] vers [Livret bleu]");
+    Compte::virementEntre($p2->getCompte("Livret A"), $p2->getCompte("Livret bleu"), 450);
+    
     echo $p2;
 ?>

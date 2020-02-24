@@ -16,7 +16,7 @@
 
         // ---- CONSTRUCTORS ----
 
-        public function __construct($libelle, $devise, $titulaire)
+        public function __construct(String $libelle, String $devise, Titulaire $titulaire)
         {
             $this->_libelle = $libelle;
             $this->_solde = 0;
@@ -42,6 +42,19 @@
 
         public function retirerArgent($somme){
             $this->_solde -= $somme;
+        }
+
+        public function virementVers($compteACrediter, $valeur){
+            self::virementEntre($this, $compteACrediter, $valeur);
+        }
+
+        // ---- STATIC METHODS ----
+
+        public static function virementEntre($compteADebiter, $compteACrediter, $valeur){
+            if ($compteADebiter->getSolde() < $valeur)
+                return;
+            $compteADebiter->retirerArgent($valeur);
+            $compteACrediter->deposerArgent($valeur);
         }
 
         // ---- ACCESSORS ----

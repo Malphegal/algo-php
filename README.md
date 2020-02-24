@@ -8,6 +8,8 @@ Ce projet contients les exercices 1 à 15 de la partie 1 et les exercices 1 à 1
 
 Par exemple l'exercice `15 part1` possède un fichier `15_class.php` supplémentaire, utilisé dans `15.php` avec `include`.
 
-Pour la partie 2, la majorité des fichiers utilisent un fichier regroupant toutes les méthodes de la partie 2, [part2_allFunctions.php](part2_allFunctions.php).
+Pour la partie 2, la majorité des fichiers utilisent un fichier regroupant toutes les méthodes de la partie 2, [part2_allFunctions.php](part2/part2_allFunctions.php).
 
-Le fichier [exerciceTableau.php](exerciceTableau.php) est l'exercice supplémentaire affiché au tableau.
+Le fichier [banque.php](banque/banque.php) est l'exercice supplémentaire sur les comptes et titulaires.
+
+Le fichier [gestionFilmMain.php](gestionFilm/gestionFilmMain.php) est l'exercice supplémentaire sur le cinéma.

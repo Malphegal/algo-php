@@ -1,5 +1,5 @@
 <?php
-    include "exerciceTableau_classCompte.php";
+    include "classCompte.php";
 
     class Titulaire
     {
@@ -13,7 +13,7 @@
 
         // ---- CONSTRUCTORS ----
 
-        public function __construct($nom, $prenom, $dateDeNaissance, $ville)
+        public function __construct(String $nom, String $prenom, String $dateDeNaissance, String $ville)
         {
             $this->_nom = $nom;
             $this->_prenom = $prenom;
@@ -38,12 +38,21 @@
             return "$res</p></div>";
         }
 
-        public function ajouterCompte($libelle, $devise){ // TODO: Check same _libelle
+        public function ajouterCompte($libelle, $devise){
+            if ($this->getCompte($libelle) != null)
+                return;
             $newCompte = new Compte($libelle, $devise, $this);
             if ($this->_comptes == null)
                 $this->_comptes = [$newCompte];
             else
                 array_push($this->_comptes, $newCompte);
+        }
+        
+        public function getCompte($libelle){
+            foreach($this->_comptes as $compte)
+                if ($compte->getLibelle() == $libelle)
+                    return $compte;
+            return null;
         }
 
         public function getAge(){
