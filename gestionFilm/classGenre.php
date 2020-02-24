@@ -12,6 +12,12 @@
             $this->_genreName = $genreName;
         }
 
+        // ---- METHODS ----
+
+        public function __toString(){
+            return $this->_genreName;
+        }
+
         // ---- ACCESSORS ----
 
         public function getGenreName(){

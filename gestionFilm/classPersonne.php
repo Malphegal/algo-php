@@ -18,6 +18,10 @@
 
         // ---- METHODS ----
 
+        public function __toString(){
+            return $this->getFullName();
+        }
+
         // ---- ACCESSORS ----
 
         public function getFullName(){

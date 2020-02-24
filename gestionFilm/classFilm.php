@@ -22,6 +22,12 @@
             $this->_genre = $genre;
         }
 
+        // ---- METHODS ----
+
+        public function __toString(){
+            return $this->getTitle();
+        }
+
         // ---- ACCESSORS ----
 
         public function getTitle(){

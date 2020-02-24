@@ -27,6 +27,8 @@
 
     // -- p2
 
+    echo "<hr style=\"height: 10px; background-color: black; border-style: hidden; margin: 5px;\">";
+
     $p2 = util_createUser("martini", "Patrick", "27-05-1967", "Gries");
 
     echo $p2;

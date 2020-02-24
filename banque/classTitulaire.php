@@ -13,13 +13,16 @@
 
         // ---- CONSTRUCTORS ----
 
-        public function __construct(String $nom, String $prenom, String $dateDeNaissance, String $ville)
+        public function __construct(String $nom, String $prenom, String $dateDeNaissance, String $ville, String $libelleCompte = null, String $devise = null)
         {
             $this->_nom = $nom;
             $this->_prenom = $prenom;
             $this->_dateDeNaissance = new DateTime($dateDeNaissance); // TODO: No string check atm
             $this->_ville = $ville;
-            $this->_comptes = [];
+            if ($libelleCompte == null || $devise == null)
+                $this->_comptes = [];
+            else
+                $this->_comptes = [new Compte($libelleCompte, $devise, $this)];
         }
 
         // ---- METHODS ----
@@ -27,7 +30,7 @@
         public function __toString()
         {
             $nbComptes = count($this->_comptes);
-            $res = "<div style=\"background-color: #dedede; margin: 5px; padding: 1px 5px;>\"<label>AFFICHAGE CLIENT :</label>\n
+            $res = "<div style=\"background-color: #dedede; margin: 5px; padding: 1px 5px;\"><label>AFFICHAGE CLIENT :</label>\n
                 <p>[" . mb_strtoupper($this->_nom) . " $this->_prenom] "
                 . $this->getAge() . ($this->getAge() > 1 ? " ans" : "an") . " possède $nbComptes " . ($nbComptes > 1 ? "comptes." : "compte.") . "</p>";
             if ($nbComptes > 0){

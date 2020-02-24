@@ -12,6 +12,12 @@
             $this->_roleName = $roleName;
         }
 
+        // ---- METHODS ----
+
+        public function __toString(){
+            return $this->_roleName;
+        }
+
         // ---- ACCESSORS ----
 
         public function getRoleName(){
