@@ -1,0 +1,22 @@
+.infos{
+    background-color: #ffc846;
+    margin: 3px 0;
+    border: 1px #888 solid;
+}
+
+.jeudetest{
+    width: fit-content;
+    background-color: #dedede;
+    border: 1px #888 solid;
+    margin: 8px 0;
+    padding: 0.5em 1em 0 1em;
+}
+
+.listtitle{
+    font-size: 20px;
+}
+
+label{
+    font-size: 20px;
+    border-bottom: 1px black solid;
+}

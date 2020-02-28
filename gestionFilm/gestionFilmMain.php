@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css" />
+
 <?php
     include "fonctionsGestionFilm.php";
     include "gestionFilmArrays.php";
@@ -54,19 +56,19 @@
     // ----
 
     // -- Tous les films d'un acteur (film + nom du rôle)
-    $title = "Tous les acteurs de <strong>" . $movie1 . "</strong> :";
+    $title = "Tous les films de <strong>" . $act1 . "</strong> :";
     $str = "";
-    foreach (ActorMovieRoleRelation::getAllActors($movie1) as $amr)
-        $str .= " * " . $amr->getActor() . " : <strong>" . $amr->getRole() . "</strong><br/>";
+    foreach (ActorMovieRoleRelation::getFilmsOf($act1) as $amr)
+        $str .= " * " . $amr->getMovie() . " : <strong>" . $amr->getRole() . "</strong><br/>";
     displayBlock($title, $str);
 
     // ----
 
     // -- Toutes les informations d'un films (titre, année, durée en HH:MM, genre, liste des acteurs (nom + prénom), réalisateur (nom + prénom))
-    $title = "Toutes les informations du film " . $movie1 . " :";
-    $str = $movie1->getTitle() . " est sortie en " . $movie1->getReleaseYear()
-        . " et dure " . $movie1->getLengthHourMinutes() . ". C'est un film de " . $movie1->getGenre() . ".<br/>"
-        . "Les acteurs sont :<br/>";
+    $title = "Toutes les informations du film <strong>" . $movie1 . "</strong> :";
+    $str = "<strong>" . $movie1->getTitle() . "</strong> est sortie en <strong>" . $movie1->getReleaseYear()
+        . "</strong> et dure <strong>" . $movie1->getLengthHourMinutes() . "</strong>. C'est un film de <strong>" . $movie1->getGenre() . "</strong>.<br/>"
+        . "<span class=\"listtitle\">Les acteurs sont :</span><br/>";
     foreach(ActorMovieRoleRelation::getAllActors($movie1) as $amr)
         $str .= " * " . $amr->getActor() . " : <strong>" . $amr->getRole() . "</strong><br/>";
     $str .= "<br/>Le film a été réalisé par <strong>" . $movie1->getDirector() . "</strong>."; 
@@ -78,7 +80,7 @@
     $title = "Tous les rôles de l'acteur <strong>" . $act1 . "</strong> :<br/>";
     $str = "";
     foreach(ActorMovieRoleRelation::getAllRoles($act1) as $amr)
-        $str .= " * " . $amr->getMovie() . " : " . $amr->getRole();
+        $str .= " * " . $amr->getMovie() . " : <strong>" . $amr->getRole() . "</strong>";
     displayBlock($title, $str);
 
     // ----
@@ -86,8 +88,8 @@
     // -- La liste des acteurs ayant incarné un rôle précis (nom + prénom de l'acteur et film dans lequel le rôle a été incarné)
     $title = "Tous les acteurs ayant eu comme rôle <strong>" . $mainRole . "</strong> :</br>";
     $str = "";
-    foreach(ActorMovieRoleRelation::actorsOfRole($mainRole) as $amr){
-        $str .= " * " . $amr->getMovie() . " : " . $amr->getActor();
+    foreach(ActorMovieRoleRelation::getActorsOfRole($mainRole) as $amr){
+        $str .= " * " . $amr->getMovie() . " : <strong>" . $amr->getActor() . "</strong>";
     }
     displayBlock($title, $str);
 
@@ -106,13 +108,13 @@
     // -----------------------------
 
     function displayBlock($title, $str){
-        echo "<div style=\"background-color: #dedede;\">
+        echo "<div class=\"jeudetest\">
                 <label>$title</label>
                 <p>$str</p>
             </div>";
     }
 
     function displayInfo($str){
-        echo "<p style=\"background-color: #ffc846; margin: 3px 0;\">$str</p>";
+        echo "<p class=\"infos\">$str</p>";
     }
 ?>
