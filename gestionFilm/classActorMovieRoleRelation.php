@@ -34,6 +34,22 @@
             return $newRelation;
         }
 
+        public static function getFilmsOf(Acteur $actor){
+            global $_allRelations;
+
+            $res = [];
+            foreach ($_allRelations as $key) {
+                if ($key->getActor() == $actor)
+                {
+                    if ($res == null)
+                        $res = [$key];
+                    else
+                        array_push($res, $key);
+                }
+            }
+            return $res;
+        }
+
         public static function getAllActors(Film $movie){
             global $_allRelations;
 
@@ -66,7 +82,7 @@
             return $res;
         }
 
-        public static function actorsOfRole(Role $role){
+        public static function getActorsOfRole(Role $role){
             global $_allRelations;
 
             $res = [];
